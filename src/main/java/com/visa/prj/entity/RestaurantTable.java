@@ -8,25 +8,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="restaurant_tables")
+@Table(name = "restaurant_tables")
 public class RestaurantTable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@OneToOne(mappedBy="rTable")
+
+	@OneToOne(mappedBy = "rTable")
 	private Reservation reservation;
-	
-	
+
 	private int capacity;
-	
+
 	public RestaurantTable() {
 	}
 
-	
-
-	
 	public RestaurantTable(int id, int capacity) {
 		super();
 
@@ -35,10 +31,6 @@ public class RestaurantTable {
 		this.capacity = capacity;
 	}
 
-
-
-
-	
 	public int getId() {
 
 		return id;
@@ -55,7 +47,7 @@ public class RestaurantTable {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	
+
 	public Reservation getReservation() {
 		return reservation;
 	}
@@ -64,5 +56,4 @@ public class RestaurantTable {
 		this.reservation = reservation;
 	}
 
-	
 }
