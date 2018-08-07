@@ -12,7 +12,6 @@ import com.visa.dao.RestaurantTimingDao;
 import com.visa.dao.UserDao;
 import com.visa.dao.VoucherDao;
 import com.visa.entity.Reservation;
-import com.visa.entity.RestaurantTable;
 import com.visa.entity.RestaurantTiming;
 import com.visa.entity.User;
 import com.visa.entity.Voucher;
@@ -99,46 +98,8 @@ public class AdminService {
 	}
 	
 	public void updateWorkingTimes(String dayOfWeek,RestaurantTiming rt) {
-//		RestaurantTiming rtt=restaurantTimingDao.getOne(rt.getDayOfWeek());
-	}
-
-	public List<RestaurantTable> getTables() {
-		return null;
-	}
-
-	public void addTable(RestaurantTable restaurantTable) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateTable(String tid, RestaurantTable restaurantTable) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateReservation(String reservation_id, Reservation reservation) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public List<RestaurantTiming> getRestaurantTimings() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void addRestaurantTiming(RestaurantTiming restaurantTiming) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateRestaurantTiming(String tid, RestaurantTiming restaurantTiming) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateVoucher(String vid, Voucher voucher) {
-		// TODO Auto-generated method stub
-		
+		RestaurantTiming rtt=restaurantTimingDao.getOne(rt.getDayOfWeek());
+	////
 	}
 
 }

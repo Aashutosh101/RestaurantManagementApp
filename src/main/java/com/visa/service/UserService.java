@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,12 @@ public class UserService {
 	@Autowired
 	private ReservationDao reservationDao;
 	
-//	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
-//		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
-//		List<RestaurantTable> allTables=restaurantTableDao.findAll();
-//		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
-//		return availableTables;		
-//	}
+	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
+		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
+		List<RestaurantTable> allTables=restaurantTableDao.findAll();
+		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
+		return availableTables;		
+	}
 	
 	public List<Reservation> getAllReservations(User u){
 		return reservationDao.findByUser(u);
@@ -43,7 +44,7 @@ public class UserService {
 	public void checkout(Reservation reservation) {
 		reservationDao.save(reservation);
 	}
-
+	
 	public boolean checkIfUserExist(String email, String password) {
 		return false;
 	}
@@ -54,10 +55,5 @@ public class UserService {
 	
 	public User getById(String email) {
 		return userDao.findById(email).get();
-	}
-
-	public List<RestaurantTable> checkAvailability(Date fromDate, int noOfPeople) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

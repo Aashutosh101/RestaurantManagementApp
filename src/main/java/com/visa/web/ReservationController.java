@@ -34,7 +34,7 @@ public class ReservationController {
 
 	@RequestMapping(value="api/admin/reservations/{reservation_id}", method=RequestMethod.PUT)
 	public ResponseEntity<Reservation> updateRestaurantTable(@PathVariable("reservation_id") String reservation_id, @RequestBody Reservation reservation){
-		adminService.updateReservation(reservation_id, reservation);
+		adminService.updateReservation(Integer.parseInt(reservation_id), reservation);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 	}
 }

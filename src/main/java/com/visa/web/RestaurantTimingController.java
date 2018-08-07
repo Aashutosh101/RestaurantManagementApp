@@ -23,18 +23,18 @@ public class RestaurantTimingController {
 	
 	@RequestMapping(value="api/admin/restaurant/timings", method=RequestMethod.GET)
 	public @ResponseBody List<RestaurantTiming> getRestaurantTimings() {
-		return adminService.getRestaurantTimings();
+		return adminService.getRestaurantTime();
 	}
 	
 	@RequestMapping(value="api/admin/restaurant/timings", method=RequestMethod.POST)
 	public ResponseEntity<RestaurantTiming> addRestaurantTiming(@RequestBody RestaurantTiming restaurantTiming) {
-		adminService.addRestaurantTiming(restaurantTiming);
+		adminService.addRestaurantTime(restaurantTiming);
 		return new ResponseEntity<RestaurantTiming>(restaurantTiming, HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value="api/admin/restaurant/timings/{tid}", method=RequestMethod.PUT)
 	public ResponseEntity<RestaurantTiming> updateRestaurantTiming(@PathVariable("tid") String tid, @RequestBody RestaurantTiming restaurantTiming){
-		adminService.updateRestaurantTiming(tid, restaurantTiming);
+		adminService.updateRestaurantTime(tid, restaurantTiming);
 		return new ResponseEntity<RestaurantTiming>(restaurantTiming, HttpStatus.OK);
 	}
 }

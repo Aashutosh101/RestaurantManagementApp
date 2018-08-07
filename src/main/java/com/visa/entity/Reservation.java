@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="reservations")
 public class Reservation {
@@ -26,13 +28,13 @@ public class Reservation {
 	@JoinColumn(name="user_fk")
 	private User user;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="table_fk")
 	private RestaurantTable rTable;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-
 	@Column(name="reserved_from")
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy hh:mm:ss")
 	private Date reservedFrom;
 
 	
@@ -169,6 +171,14 @@ public class Reservation {
 
 	public void setNoOfPeople(int noOfPeople) {
 		this.noOfPeople = noOfPeople;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [reservationId=" + reservationId + ", user=" + user + ", rTable=" + rTable
+				+ ", reservedFrom=" + reservedFrom + ", status=" + status + ", title=" + title + ", fName=" + fName
+				+ ", lName=" + lName + ", email=" + email + ", phone=" + phone + ", voucher=" + voucher
+				+ ", noOfPeople=" + noOfPeople + "]";
 	}
 	
 	

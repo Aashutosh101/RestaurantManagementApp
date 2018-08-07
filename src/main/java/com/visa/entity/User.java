@@ -39,8 +39,8 @@ public class User {
 		this.password = password;
 	}
 	public User() {
-		super();
 	}
+	
 	public String getEmail() {
 		return email;
 	}
