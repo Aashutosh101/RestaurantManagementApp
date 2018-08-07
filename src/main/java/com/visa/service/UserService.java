@@ -1,4 +1,4 @@
-package com.visa.prj.service;
+package com.visa.service;
 
 import java.util.Date;
 import java.util.List;
@@ -9,12 +9,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.visa.prj.dao.ReservationDao;
-import com.visa.prj.dao.RestaurantTableDao;
-import com.visa.prj.dao.UserDao;
-import com.visa.prj.entity.Reservation;
-import com.visa.prj.entity.RestaurantTable;
-import com.visa.prj.entity.User;
+import com.visa.dao.ReservationDao;
+import com.visa.dao.RestaurantTableDao;
+import com.visa.dao.UserDao;
+import com.visa.entity.Reservation;
+import com.visa.entity.RestaurantTable;
+import com.visa.entity.User;
 
 @Service
 public class UserService {
@@ -28,12 +28,12 @@ public class UserService {
 	@Autowired
 	private ReservationDao reservationDao;
 	
-	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
-		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
-		List<RestaurantTable> allTables=restaurantTableDao.findAll();
-		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
-		return availableTables;		
-	}
+//	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
+//		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
+//		List<RestaurantTable> allTables=restaurantTableDao.findAll();
+//		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
+//		return availableTables;		
+//	}
 	
 	public List<Reservation> getAllReservations(User u){
 		return reservationDao.findByUser(u);
@@ -54,5 +54,10 @@ public class UserService {
 	
 	public User getById(String email) {
 		return userDao.findById(email).get();
+	}
+
+	public List<RestaurantTable> checkAvailability(Date fromDate, int noOfPeople) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -1,4 +1,4 @@
-package com.visa.prj.service;
+package com.visa.service;
 
 import java.util.List;
 
@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.visa.prj.dao.ReservationDao;
-import com.visa.prj.dao.RestaurantTableDao;
-import com.visa.prj.dao.RestaurantTimingDao;
-import com.visa.prj.dao.UserDao;
-import com.visa.prj.dao.VoucherDao;
-import com.visa.prj.entity.Reservation;
-import com.visa.prj.entity.RestaurantTiming;
-import com.visa.prj.entity.User;
-import com.visa.prj.entity.Voucher;
+import com.visa.dao.ReservationDao;
+import com.visa.dao.RestaurantTableDao;
+import com.visa.dao.RestaurantTimingDao;
+import com.visa.dao.UserDao;
+import com.visa.dao.VoucherDao;
+import com.visa.entity.Reservation;
+import com.visa.entity.RestaurantTable;
+import com.visa.entity.RestaurantTiming;
+import com.visa.entity.User;
+import com.visa.entity.Voucher;
 
 @Service
 public class AdminService {
@@ -98,8 +99,46 @@ public class AdminService {
 	}
 	
 	public void updateWorkingTimes(String dayOfWeek,RestaurantTiming rt) {
-		RestaurantTiming rtt=restaurantTimingDao.getOne(rt.getDayOfWeek());
-	////
+//		RestaurantTiming rtt=restaurantTimingDao.getOne(rt.getDayOfWeek());
+	}
+
+	public List<RestaurantTable> getTables() {
+		return null;
+	}
+
+	public void addTable(RestaurantTable restaurantTable) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateTable(String tid, RestaurantTable restaurantTable) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateReservation(String reservation_id, Reservation reservation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<RestaurantTiming> getRestaurantTimings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addRestaurantTiming(RestaurantTiming restaurantTiming) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateRestaurantTiming(String tid, RestaurantTiming restaurantTiming) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateVoucher(String vid, Voucher voucher) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

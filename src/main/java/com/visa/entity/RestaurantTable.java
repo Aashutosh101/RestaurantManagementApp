@@ -1,4 +1,4 @@
-package com.visa.prj.entity;
+package com.visa.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

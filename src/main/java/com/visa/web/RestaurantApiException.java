@@ -1,4 +1,4 @@
-package com.visa.prj.web;
+package com.visa.web;
 
 public class RestaurantApiException extends Exception {
 

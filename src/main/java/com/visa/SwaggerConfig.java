@@ -21,7 +21,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("Meeting Room booking APIs", "Some custom description of API.", "api v1", "Terms of service",
+		return new ApiInfo("Restaurant Management APIs", "API for restaurant management..", "api v1", "Terms of service",
 				new Contact("Banuprakash C", "http://lucidatechnologies.com", "banu@lucidatechnologies.com"),
 				"License of API", "API license URL", Collections.emptyList());
 	}

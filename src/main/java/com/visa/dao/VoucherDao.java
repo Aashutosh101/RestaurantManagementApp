@@ -1,11 +1,11 @@
-package com.visa.prj.dao;
+package com.visa.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.visa.prj.entity.User;
+import com.visa.entity.Voucher;
 
 @Repository
-public interface UserDao extends JpaRepository<User, String> {
+public interface VoucherDao extends JpaRepository<Voucher, Integer> {
 
 }

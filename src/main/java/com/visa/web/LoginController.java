@@ -1,4 +1,4 @@
-package com.visa.prj.web;
+package com.visa.web;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.visa.prj.service.UserService;
+import com.visa.service.UserService;
 
 @Controller
 public class LoginController {

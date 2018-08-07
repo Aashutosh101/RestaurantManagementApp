@@ -1,4 +1,4 @@
-package com.visa.prj.web;
+package com.visa.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
