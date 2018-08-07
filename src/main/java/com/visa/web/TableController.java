@@ -32,9 +32,5 @@ public class TableController {
 		return new ResponseEntity<RestaurantTable>(restaurantTable, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value="api/admin/restaurant/tables/{tid}", method=RequestMethod.PUT)
-	public ResponseEntity<RestaurantTable> updateRestaurantTable(@PathVariable("tid") String tid, @RequestBody RestaurantTable restaurantTable){
-		adminService.updateTable(tid, restaurantTable);
-		return new ResponseEntity<RestaurantTable>(restaurantTable, HttpStatus.OK);
-	}
+	
 }
