@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 
 import com.visa.dao.ReservationDao;
 import com.visa.dao.RestaurantTableDao;
+import com.visa.dao.RestaurantTimingDao;
 import com.visa.dao.UserDao;
 import com.visa.entity.Reservation;
 import com.visa.entity.RestaurantTable;
+import com.visa.entity.RestaurantTiming;
 import com.visa.entity.User;
 
 @Service
@@ -27,6 +29,10 @@ public class UserService {
 	
 	@Autowired
 	private ReservationDao reservationDao;
+	
+	@Autowired
+	private RestaurantTimingDao restaurantTimingDao;
+	
 	
 	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
 		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
@@ -55,6 +61,8 @@ public class UserService {
 	public User getById(String email) {
 		return userDao.findById(email).get();
 	}
-
 	
+	public RestaurantTiming getRestaurantTimingByDay(int i) {
+		return restaurantTimingDao.findByDayOfWeek(i);
+	}
 }

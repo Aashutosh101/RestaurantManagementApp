@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,31 +27,15 @@ public class Voucher {
 	
 	@Column(name="is_valid")
 	private boolean isValid;
-	
-	@OneToOne(mappedBy="voucher")
-	private Reservation reservation;
-
-	public Reservation getReservation() {
-		return reservation;
-	}
-
-
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
 
 	public Voucher() {
 	}
 	
-
-	
-	public Voucher(int voucherId, User user, String voucherCode, boolean isValid, Reservation reservation) {
+	public Voucher(int voucherId, User user, String voucherCode, boolean isValid) {
 		this.voucherId = voucherId;
 		this.user = user;
 		this.voucherCode = voucherCode;
 		this.isValid = isValid;
-		this.reservation = reservation;
 	}
 
 
