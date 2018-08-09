@@ -28,12 +28,12 @@ public class UserService {
 	@Autowired
 	private ReservationDao reservationDao;
 	
-//	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
-//		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
-//		List<RestaurantTable> allTables=restaurantTableDao.findAll();
-//		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
-//		return availableTables;		
-//	}
+	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
+		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
+		List<RestaurantTable> allTables=restaurantTableDao.findAll();
+		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
+		return availableTables;		
+	}
 	
 	public List<Reservation> getAllReservations(User u){
 		return reservationDao.findByUser(u);
@@ -56,8 +56,5 @@ public class UserService {
 		return userDao.findById(email).get();
 	}
 
-	public List<RestaurantTable> checkAvailability(Date fromDate, int noOfPeople) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
