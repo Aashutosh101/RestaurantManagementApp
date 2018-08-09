@@ -20,7 +20,7 @@ public interface ReservationDao extends JpaRepository<Reservation, Integer> {
 	
 	public List<Reservation> findByUser(User user);
 	
-	@Query("FROM Reservation r where r.reservedFrom > :date AND r.reservedFrom< :nextDate")
+	@Query("FROM Reservation r where r.reservedFrom >= :date AND r.reservedFrom < :nextDate")
 	public List<Reservation> findByDate(@Param("date") Date date,@Param("nextDate") Date nextDate );
 	
 }
