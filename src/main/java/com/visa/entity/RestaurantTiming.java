@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 public class RestaurantTiming {
 
 	@Id
-	private String dayOfWeek;
+	private int dayOfWeek;
 	
 //	@Temporal(TemporalType.TIME)
 	@Column(name="start_time")
@@ -34,7 +34,7 @@ public class RestaurantTiming {
 	public RestaurantTiming() {
 	}
 
-	public RestaurantTiming(String dayOfWeek, String startTime, String endTime, User addedBy, boolean isDayOff) {
+	public RestaurantTiming(int dayOfWeek, String startTime, String endTime, User addedBy, boolean isDayOff) {
 		super();
 		this.dayOfWeek = dayOfWeek;
 		this.startTime = startTime;
@@ -43,11 +43,11 @@ public class RestaurantTiming {
 		this.isDayOff = isDayOff;
 	}
 
-	public String getDayOfWeek() {
+	public int getDayOfWeek() {
 		return dayOfWeek;
 	}
 
-	public void setDayOfWeek(String dayOfWeek) {
+	public void setDayOfWeek(int dayOfWeek) {
 		this.dayOfWeek = dayOfWeek;
 	}
 

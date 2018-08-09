@@ -17,4 +17,10 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     ErrorDetails errorDetails = new ErrorDetails(ex.getInput(), ex.getMessage(), "Please enter a valid date and time");
     return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
   }
+  
+  @ExceptionHandler(TimeOutOfBoundsException.class)
+  public final ResponseEntity<ErrorDetails> timeOutOfBounds(TimeOutOfBoundsException ex, WebRequest request) {
+    ErrorDetails errorDetails = new ErrorDetails(ex.getInput(), ex.getMessage(),"Our restaurant is closed during those hours! Please try other timing :)");
+    return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+  }
 }

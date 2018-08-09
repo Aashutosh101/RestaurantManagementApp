@@ -1,5 +1,8 @@
 package com.visa.web;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +31,9 @@ public class ReservationController {
 	private UserService userService;
 	
 	@RequestMapping(value="api/admin/reservations", method=RequestMethod.GET)
-	public @ResponseBody List<Reservation> getReservations() {
-		return adminService.getAllReservations();
-	}
-	
-	@RequestMapping(value="api/admin/reservations", method=RequestMethod.POST)
-	public ResponseEntity<Reservation> addReservation(@RequestBody Reservation reservation) {
-		adminService.addReservation(reservation);
-		return new ResponseEntity<Reservation>(reservation, HttpStatus.CREATED);
+	public @ResponseBody List<Reservation> getAllReservations() {
+		List<Reservation> r= adminService.getAllReservations();
+		return r;
 	}
 
 	@RequestMapping(value="api/admin/reservations/{reservation_id}", method=RequestMethod.PUT)
@@ -44,8 +42,32 @@ public class ReservationController {
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="api/admin/reservations/{date}/{time}", method=RequestMethod.GET)
+	public @ResponseBody List<Reservation> getReservationsByDate(@PathVariable("date") String date,@PathVariable("time") String time) throws RestaurantApiException {
+		SimpleDateFormat datetimeFormatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		Date fromDate;
+		try {
+			fromDate = datetimeFormatter.parse(date+" "+time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			throw new RestaurantApiException(date+" "+time,  e.getMessage(), e);
+		}
+		List<Reservation> r= adminService.getReservationByDate(fromDate);
+		return r;
+	}
 	
+	@RequestMapping(value="api/admin/reservations/today", method=RequestMethod.GET)
+	public @ResponseBody List<Reservation> getReservationsToday(){
+		return adminService.getReservationToday();
+	}
 	
+
+	@RequestMapping(value="api/admin/reservations/tomorrow", method=RequestMethod.GET)
+	public @ResponseBody List<Reservation> getReservationsTomorrow(){
+		return adminService.getReservationTomorrow();
+	}
+	
+
 	@RequestMapping(value="api/users/reservations/{email}",method=RequestMethod.GET)
 	public @ResponseBody List<Reservation> getReservations(@PathVariable("email") String email){
 		User u = userService.getById(email);

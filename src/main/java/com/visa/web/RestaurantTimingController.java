@@ -33,7 +33,7 @@ public class RestaurantTimingController {
 	}
 	
 	@RequestMapping(value="api/admin/restaurant/timings/{tid}", method=RequestMethod.PUT)
-	public ResponseEntity<RestaurantTiming> updateRestaurantTiming(@PathVariable("tid") String tid, @RequestBody RestaurantTiming restaurantTiming){
+	public ResponseEntity<RestaurantTiming> updateRestaurantTiming(@PathVariable("tid") int tid, @RequestBody RestaurantTiming restaurantTiming){
 		adminService.updateRestaurantTime(tid, restaurantTiming);
 		return new ResponseEntity<RestaurantTiming>(restaurantTiming, HttpStatus.OK);
 	}
