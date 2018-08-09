@@ -62,8 +62,12 @@ public class AdminService {
 	}
 	
 	public List<Reservation> getReservationByDate(Date date){
+		//date.setTime(time);
+		//Date d=new Date(date.getYear(),date.getMonth(),date.getDate(),0,0,0);
+		//Date nextDate=new Date(d.getTime()+1000*24*60*60)
 		Date nextDate=new Date(date.getTime()+1000*24*60*60);
 		return reservationDao.findByDate(date,nextDate);
+		
 	}
 	
 	public List<Reservation> getReservationToday(){
@@ -143,7 +147,7 @@ public class AdminService {
 		
 	}
 	
-	public int validateVoucher(String voucherCode) {
+	public Voucher validateVoucher(String voucherCode) {
 		return voucherDao.findByVoucherCode(voucherCode);
 				
 	}
