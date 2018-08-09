@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/bookingForm.css"/>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	<script src="../js/bookingForm.js"></script>
+	<link rel="stylesheet" href="../css/utility.css"/>
+	<title>Reservation</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row upper-space">
+			<div class="col-lg-offset-3 col-lg-6 col-xs-12">
+				<div class="panel">
+					<div class="panel-heading">
+						<div class="white-text center-text">BOOKING DETAILS</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-3 col-lg-offset-3 right-text col-xs-6 right-align black-bold-text">Date and Time : </div>
+							<div class="col-lg-3 col-xs-6" id="date_time"></div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3 col-lg-offset-3 right-text col-xs-6 right-align black-bold-text" id="people"></div>
+							<div class="col-lg-3 col-xs-6" id="selected_table"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 center-text black-bold-text upper-space large-text">Reservation Form</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 center-text">Fill the form to reserve a table</div>
+						</div>
+						<div id="booking_details" class="upper-space white-bg">
+							<form>
+								<div class="form-group col-lg-5 col-xs-12">
+									<label for="title">Title</label>
+									<select class="form-control" id="title" name="title">
+										<option value="Mr." default>Mr</option>
+										<option value="Ms.">Ms</option>
+										<option value="Mrs.">Mrs.</option>
+										<option value="Master">Master</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-5 col-lg-offset-2 col-xs-12">
+									<label for="first_name">First Name*</label>
+									<input type="text" class="form-control" id="first_name" name="first_name" required/>
+								</div>
+								<div class="form-group col-lg-5 col-xs-12">
+									<label for="last_name">Last Name</label>
+									<input type="text" class="form-control" id="last_name" name="last_name"/>
+								</div>
+								<div class="form-group col-lg-5 col-xs-12 col-lg-offset-2">
+									<label for="email">Email*</label>
+									<input type="email" class="form-control" id="email" name="email" required/>
+								</div>
+								<div class="form-group col-lg-5 col-xs-12">
+									<label for="phone">Phone*</label>
+									<input type="mobile" class="form-control" id="phone" name="phone" required/>
+								</div>
+								<div class="row"></div>
+								<div class="col-lg-4 col-xs-6 form-group upper-space">
+									<label for="voucher">Voucher</label>
+									<input type="text" class="form-control" id="voucher" name="voucher">
+								</div>
+								<div class="row"></div>
+								<div class="col-lg-4 col-xs-6 form-group">
+									<label for="payment">Payment Method</label>
+									<select class="form-control" id="payment" name="payment">
+										<option value="cash">Cash</option>
+										<option value="Debit Card">Debit Card</option>
+										<option value="Credit Card">Credit Card</option>
+										<option value="Net Banking">Net Banking</option>
+										<option value="UPI">UPI</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-12">
+									<div class="btn btn-success form-control upper-space" id="checkout">Checkout</div>
+								</div>
+								<div id="error" class="row error upper-space"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

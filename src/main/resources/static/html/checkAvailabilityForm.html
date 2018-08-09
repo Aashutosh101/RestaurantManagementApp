@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/checkAvailabilityForm.css"/>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	<script src="../js/checkAvailabilityForm.js"></script>
+	<link rel="stylesheet" href="../css/seatMap.css"/>
+	<link rel="stylesheet" href="../css/utility.css"/>
+	<title>Reservation</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row upper-space">
+			<div class="col-lg-offset-3 col-lg-6 col-xs-12">
+				<div class="panel">
+					<div class="panel-heading">
+						<div class="white-text center-text">SELECT DATE AND TIME FOR YOUR RESERVATION</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<form>
+								<div class="form-group col-lg-2">
+									<label for="date">Date</label>
+									<input type="date" class="form-control" id="date" name="date" required/>
+								</div>
+								<div class="form-group col-lg-2 col-lg-offset-1">
+									<label for="time">Time</label>
+									<select class="form-control" id="time" name="time">
+										<option value="00:00:00">12:00 AM</option>
+										<option value="01:00:00">01:00 AM</option>
+										<option value="02:00:00">02:00 AM</option>
+										<option value="03:00:00">03:00 AM</option>
+										<option value="04:00:00">04:00 AM</option>
+										<option value="05:00:00">05:00 AM</option>
+										<option value="06:00:00">06:00 AM</option>
+										<option value="07:00:00">07:00 AM</option>
+										<option value="08:00:00">08:00 AM</option>
+										<option value="09:00:00">09:00 AM</option>
+										<option value="10:00:00">10:00 AM</option>
+										<option value="11:00:00">11:00 AM</option>
+										<option value="12:00:00">12:00 PM</option>
+										<option value="13:00:00">01:00 PM</option>
+										<option value="14:00:00">02:00 PM</option>
+										<option value="15:00:00">03:00 PM</option>
+										<option value="16:00:00">04:00 PM</option>
+										<option value="17:00:00">05:00 PM</option>
+										<option value="18:00:00">06:00 PM</option>
+										<option value="19:00:00">07:00 PM</option>
+										<option value="20:00:00">08:00 PM</option>
+										<option value="21:00:00">09:00 PM</option>
+										<option value="22:00:00">10:00 PM</option>
+										<option value="23:00:00">11:00 PM</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-2 col-lg-offset-1">
+									<label for="people">People</label>
+									<input type="number" min="1" max="20" class="form-control" id="people" name="people" required/>
+								</div>
+								<div class="form-group col-lg-3 col-lg-offset-1">
+									<label class="no-show">gjkdbiewsfgrdhdthn</label>
+									<button class="btn btn-danger form-control" id="check_availability">Check Availability</button> 
+								</div>
+							</form>
+						</div>
+						<div id="error" class="row error"></div>
+						<div id="availability_details">
+							<div class="row" id="seat_map">
+								<img src="../assets/images/seat_map.png"/>
+									<div id="table1">1</div>
+									<div id="table2">2</div>
+									<div id="table3">3</div>
+									<div id="table4">4</div>
+									<div id="table5">5</div>
+									<div id="table6">6</div>
+									<div id="table7">7</div>
+									<div id="table8">8</div>
+									<div id="table9">9</div>
+									<div id="table10">10</div>
+									<div id="table11">11</div>
+									<div id="table12">12</div>
+									<div id="table13">13</div>
+									<div id="table14">14</div>
+									<div id="table15">15</div>
+									<div id="table16">16</div>
+									<div id="table17">17</div>
+									<div id="table18">18</div>
+									<div id="table19">19</div>
+									<div id="table20">20</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-3 col-lg-offset-9 col-xs-12">
+									<div class="btn btn-success full-width upper-space" id="proceed_book">Next</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

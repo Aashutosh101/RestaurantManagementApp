@@ -1,0 +1,26 @@
+input[type=date], input[type=time] {
+	width: 160px;
+}
+
+.no-show {
+	visibility: hidden;
+}
+
+#seat_map {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	position: relative;
+}
+
+.full-width {
+	width: 100%;
+}
+
+#availability_details {
+	display: none;
+}
+
+
+

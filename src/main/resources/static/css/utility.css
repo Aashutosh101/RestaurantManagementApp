@@ -1,0 +1,63 @@
+.upper-space {
+	margin-top: 20px;
+}
+
+.white-text {
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.panel > .panel-heading {
+	background-color: black;
+	padding: 15px;
+}
+
+.right-align {
+	text-align: right;
+}
+
+.black-bold-text {
+	color: black;
+	font-style: bold;
+}
+
+.large-text {
+	font-size: 19px;
+}
+
+.panel > .panel-body {
+	background-color:#EEEEEE;
+}
+
+.white-bg {
+	background-color: white;
+}
+
+.error {
+	font-size: 19px;
+	color: red;
+	text-align: center;
+	display: none;
+}
+
+.success {
+	font-size: 19px;
+	color: green;
+	text-align: center;
+	display: none;
+}
+
+.left-space {
+	margin-left: 20px;
+}
+
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 100%;
+}
