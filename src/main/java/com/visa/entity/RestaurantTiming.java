@@ -10,7 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "restaurant_timings")
+@Table(name = "restaurant_timing")
 public class RestaurantTiming {
 
 	@Id

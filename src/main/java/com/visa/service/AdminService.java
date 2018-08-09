@@ -142,6 +142,11 @@ public class AdminService {
 		restaurantTimingDao.save(restaurantTiming);
 		
 	}
+	
+	public int validateVoucher(String voucherCode) {
+		return voucherDao.findByVoucherCode(voucherCode);
+				
+	}
 
 	
 	

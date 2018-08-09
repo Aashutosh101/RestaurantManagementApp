@@ -25,7 +25,7 @@ public class LoginController {
 		boolean userExists = userService.checkIfUserExist(email, password);
 		try {
 			if (userExists == true) {
-				response.sendRedirect("userHome.html");
+				response.sendRedirect("checkAvailabilityForm.html");
 			} else {
 				response.sendRedirect("index.html");
 			}

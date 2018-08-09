@@ -37,4 +37,10 @@ public class VoucherController {
 		adminService.updateVoucher(Integer.parseInt(vid), voucher);
 		return new ResponseEntity<Voucher>(voucher, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "api/user/voucher_validate", method = RequestMethod.GET)
+	public @ResponseBody int validateVoucher(String voucherCode) {
+		return adminService.validateVoucher(voucherCode);
+	}
+
 }

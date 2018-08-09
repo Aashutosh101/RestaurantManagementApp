@@ -7,5 +7,6 @@ import com.visa.entity.Voucher;
 
 @Repository
 public interface VoucherDao extends JpaRepository<Voucher, Integer> {
+	int findByVoucherCode(String voucherCode);
 
 }
