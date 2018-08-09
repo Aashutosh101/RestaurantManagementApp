@@ -30,6 +30,7 @@ public class UserService {
 	
 	public List<RestaurantTable> checkAvailability(Date date, int noOfPeople) {
 		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
+		System.out.println(reservedTables);
 		List<RestaurantTable> allTables=restaurantTableDao.findAll();
 		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
 		return availableTables;		

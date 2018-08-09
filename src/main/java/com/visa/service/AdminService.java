@@ -143,7 +143,7 @@ public class AdminService {
 		
 	}
 	
-	public int validateVoucher(String voucherCode) {
+	public Voucher validateVoucher(String voucherCode) {
 		return voucherDao.findByVoucherCode(voucherCode);
 				
 	}

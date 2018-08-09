@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="reservations")
@@ -29,7 +31,7 @@ public class Reservation {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="table_fk")
+	@JoinColumn(name="r_table_fk")
 	private RestaurantTable rTable;
 	
 	@Temporal(TemporalType.TIMESTAMP)
