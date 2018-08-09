@@ -30,7 +30,7 @@ public class RegistrationController {
 		try {
 			Date fromDate = datetimeFormatter.parse(date+" "+time);
 			availableTables=userService.checkAvailability(fromDate, noOfPeople);
-		//	availableTables.add(new RestaurantTable(0,4));
+			//availableTables.add(new RestaurantTable(0,4));
 			return availableTables;
 		} catch (ParseException e) {
 			e.printStackTrace();
