@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,8 +46,8 @@ public class ReservationController {
 	
 	
 	
-	@RequestMapping(value="api/users/reservations",method=RequestMethod.GET)
-	public @ResponseBody List<Reservation> getReservations(@PathVariable String email){
+	@RequestMapping(value="api/users/reservations/{email}",method=RequestMethod.GET)
+	public @ResponseBody List<Reservation> getReservations(@PathVariable("email") String email){
 		User u = userService.getById(email);
 		return  userService.getAllReservations(u);
 	}
