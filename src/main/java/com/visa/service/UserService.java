@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,7 @@ public class UserService {
 	public void checkout(Reservation reservation) {
 		reservationDao.save(reservation);
 	}
-	
+
 	public boolean checkIfUserExist(String email, String password) {
 		return false;
 	}

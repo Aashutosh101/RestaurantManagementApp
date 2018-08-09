@@ -15,8 +15,12 @@ import com.visa.entity.User;
 @Repository
 public interface ReservationDao extends JpaRepository<Reservation, Integer> {
 
-	@Query("SELECT r.rTable FROM  Reservation r WHERE r.reservedFrom = :date AND r.status = 'Cancelled' OR  r.status = 'Enquiry'")
+	@Query("SELECT r.rTable FROM  Reservation r where r.reservedFrom = :date AND r.status = 'Cancelled' OR  r.status = 'Enquiry'")
 	public List<RestaurantTable> findReservedTables(@Param("date") Date date);
 	
 	public List<Reservation> findByUser(User user);
+	
+	@Query("FROM Reservation r where r.reservedFrom>:date AND r.reservedFrom<: nextDate")
+	public List<Reservation> findByDate(@Param("date") Date date,@Param("nextDate") Date nextDate );
+	
 }

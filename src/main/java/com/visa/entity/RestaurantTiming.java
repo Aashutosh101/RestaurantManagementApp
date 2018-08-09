@@ -1,7 +1,5 @@
 package com.visa.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,19 +10,19 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="restaurant_timing")
+@Table(name = "restaurant_timing")
 public class RestaurantTiming {
 
 	@Id
 	private String dayOfWeek;
 	
-	@Temporal(TemporalType.TIME)
+//	@Temporal(TemporalType.TIME)
 	@Column(name="start_time")
-	private Date startTime;
+	private String startTime;
 	
-	@Temporal(TemporalType.TIME)
+//	@Temporal(TemporalType.TIME)
 	@Column(name="end_time")
-	private Date endTime;
+	private String endTime;
 	
 	@ManyToOne
 	@JoinColumn(name="added_by_fk")
@@ -36,7 +34,7 @@ public class RestaurantTiming {
 	public RestaurantTiming() {
 	}
 
-	public RestaurantTiming(String dayOfWeek, Date startTime, Date endTime, User addedBy, boolean isDayOff) {
+	public RestaurantTiming(String dayOfWeek, String startTime, String endTime, User addedBy, boolean isDayOff) {
 		super();
 		this.dayOfWeek = dayOfWeek;
 		this.startTime = startTime;
@@ -53,19 +51,19 @@ public class RestaurantTiming {
 		this.dayOfWeek = dayOfWeek;
 	}
 
-	public Date getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 
-	public Date getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Date endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 

@@ -1,5 +1,6 @@
 package com.visa.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.visa.dao.RestaurantTimingDao;
 import com.visa.dao.UserDao;
 import com.visa.dao.VoucherDao;
 import com.visa.entity.Reservation;
+import com.visa.entity.RestaurantTable;
 import com.visa.entity.RestaurantTiming;
 import com.visa.entity.User;
 import com.visa.entity.Voucher;
@@ -58,7 +60,24 @@ public class AdminService {
 	public List<Reservation> getAllReservations() {
 		return reservationDao.findAll();
 	}
-
+	
+	public List<Reservation> getReservationByDate(Date date){
+		Date nextDate=new Date(date.getTime()+1000*24*60*60);
+		return reservationDao.findByDate(date,nextDate);
+	}
+	
+	public List<Reservation> getReservationToday(){
+		Date date=new Date();
+		Date nextDate= new Date(date.getTime()+1000*24*60*60);
+		return reservationDao.findByDate(date,nextDate);
+	}
+	
+	public List<Reservation> getReservationTomorrow(){
+		Date nextDate=new Date();
+		Date date= new Date(nextDate.getTime()-1000*24*60*60);
+		return reservationDao.findByDate(date,nextDate);
+	}
+	
 	@Transactional
 	public void addReservation(Reservation r) {
 		reservationDao.save(r);
@@ -78,28 +97,54 @@ public class AdminService {
 		}
 
 	}
-	
-	public List <Voucher> getAllVouchers() {
+
+	public List<Voucher> getAllVouchers() {
 		return voucherDao.findAll();
 	}
-	
+
+	@Transactional
 	public void addVoucher(Voucher v) {
 		voucherDao.save(v);
 	}
-	
+
+	@Transactional
 	public void updateVoucher(int id, Voucher v) {
-		Voucher vv=voucherDao.getOne(id);
+		Voucher vv = voucherDao.getOne(id);
 		vv.setVoucherCode(v.getVoucherCode());
 		vv.setValid(v.isValid());
 	}
-	
-	public List<RestaurantTiming> getRestaurantTime(){
+
+	public List<RestaurantTiming> getRestaurantTime() {
 		return restaurantTimingDao.findAll();
 	}
-	
-	public void updateWorkingTimes(String dayOfWeek,RestaurantTiming rt) {
-		RestaurantTiming rtt=restaurantTimingDao.getOne(rt.getDayOfWeek());
-	////
+
+	@Transactional
+	public void updateRestaurantTime(String dayOfWeek, RestaurantTiming rt) {
+		RestaurantTiming rtt = restaurantTimingDao.getOne(rt.getDayOfWeek());
+		rtt.setStartTime(rt.getStartTime());
+		rtt.setEndTime(rt.getEndTime());
+		rtt.setDayOff(rt.isDayOff());
+		rtt.setAddedBy(rt.getAddedBy());
+		////
 	}
 
+	public List<RestaurantTable> getTables() {
+		return restaurantTableDao.findAll();
+	}
+
+	@Transactional
+	public void addTable(RestaurantTable t) {
+		restaurantTableDao.save(t);
+	}
+
+	@Transactional
+	public void addRestaurantTime(RestaurantTiming restaurantTiming) {
+		restaurantTimingDao.save(restaurantTiming);
+		
+	}
+	
+	public int validateVoucher(String voucherCode) {
+		return voucherDao.findByVoucherCode(voucherCode);
+				
+	}
 }
