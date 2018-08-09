@@ -1,25 +1,20 @@
 package com.visa.entity;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "restaurant_tables")
+@Table(name="restaurant_tables")
 public class RestaurantTable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
-	@OneToOne(mappedBy = "rTable")
-	private Reservation reservation;
-
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;	
+	
 	private int capacity;
-
+	
 	public RestaurantTable() {
 	}
 
@@ -27,7 +22,6 @@ public class RestaurantTable {
 		super();
 
 		this.id = id;
-		this.reservation = reservation;
 		this.capacity = capacity;
 	}
 
@@ -48,12 +42,10 @@ public class RestaurantTable {
 		this.capacity = capacity;
 	}
 
-	public Reservation getReservation() {
-		return reservation;
-	}
-
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
+	@Override
+	public String toString() {
+		return "RestaurantTable [id=" + id + ", capacity=" + capacity + "]";
+	}	
+	
+	
 }

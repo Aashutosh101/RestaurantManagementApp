@@ -62,20 +62,26 @@ public class AdminService {
 	}
 	
 	public List<Reservation> getReservationByDate(Date date){
-		Date nextDate=new Date(date.getTime()+1000*24*60*60);
+		Date temporary=new Date(date.getYear(),date.getMonth(),date.getDate(),0,0,0);
+		Date nextDate=new Date(temporary.getTime()+1000*24*60*60);
 		return reservationDao.findByDate(date,nextDate);
 	}
 	
 	public List<Reservation> getReservationToday(){
 		Date date=new Date();
-		Date nextDate= new Date(date.getTime()+1000*24*60*60);
+		Date temporary=new Date(date.getYear(),date.getMonth(),date.getDate(),0,0,0);
+		Date nextDate=new Date(temporary.getTime()+1000*24*60*60);
 		return reservationDao.findByDate(date,nextDate);
 	}
 	
 	public List<Reservation> getReservationTomorrow(){
-		Date nextDate=new Date();
-		Date date= new Date(nextDate.getTime()-1000*24*60*60);
-		return reservationDao.findByDate(date,nextDate);
+		Date date=new Date();
+		Date temporary=new Date(date.getYear(),date.getMonth(),date.getDate(),0,0,0);
+		Date tomorrow=new Date(temporary.getTime()+1000*24*60*60);
+		Date afterTomorrow=new Date(tomorrow.getTime()+1000*24*60*60);
+		System.out.println(tomorrow);
+		System.out.println(afterTomorrow);
+		return reservationDao.findByDate(tomorrow,afterTomorrow);
 	}
 	
 	@Transactional
@@ -86,16 +92,9 @@ public class AdminService {
 	@Transactional
 	public void updateReservation(int id, Reservation r) {
 		Reservation rr = reservationDao.getOne(id);
-		if (r.getfName() != null) {
-			rr.setfName(r.getfName());
-		}
-		if (r.getlName() != null) {
-			rr.setlName(r.getlName());
-		}
-		if (r.getStatus() != null) {
-			rr.setStatus(r.getStatus());
-		}
-
+		rr.setfName(r.getfName());
+		rr.setlName(r.getlName());
+		rr.setStatus(r.getStatus());
 	}
 
 	public List<Voucher> getAllVouchers() {
@@ -119,7 +118,7 @@ public class AdminService {
 	}
 
 	@Transactional
-	public void updateRestaurantTime(String dayOfWeek, RestaurantTiming rt) {
+	public void updateRestaurantTime(int dayOfWeek, RestaurantTiming rt) {
 		RestaurantTiming rtt = restaurantTimingDao.getOne(rt.getDayOfWeek());
 		rtt.setStartTime(rt.getStartTime());
 		rtt.setEndTime(rt.getEndTime());
@@ -143,12 +142,8 @@ public class AdminService {
 		
 	}
 	
-	public int validateVoucher(String voucherCode) {
+	public Voucher validateVoucher(String voucherCode) {
 		return voucherDao.findByVoucherCode(voucherCode);
 				
 	}
-
-	
-	
-
 }

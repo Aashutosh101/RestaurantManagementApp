@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.visa.entity.RestaurantTiming;
 
 @Repository
-public interface RestaurantTimingDao extends JpaRepository<RestaurantTiming, String> {
+public interface RestaurantTimingDao extends JpaRepository<RestaurantTiming, Integer> {
+
+	public RestaurantTiming findByDayOfWeek(int i);
 
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="reservations")
@@ -26,13 +30,13 @@ public class Reservation {
 	@JoinColumn(name="user_fk")
 	private User user;
 	
-	@OneToOne
-	@JoinColumn(name="table_fk")
+	@ManyToOne
+	@JoinColumn(name="r_table_fk")
 	private RestaurantTable rTable;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-
 	@Column(name="reserved_from")
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy hh:mm:ss")
 	private Date reservedFrom;
 
 	
@@ -169,6 +173,14 @@ public class Reservation {
 
 	public void setNoOfPeople(int noOfPeople) {
 		this.noOfPeople = noOfPeople;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [reservationId=" + reservationId + ", user=" + user + ", rTable=" + rTable
+				+ ", reservedFrom=" + reservedFrom + ", status=" + status + ", title=" + title + ", fName=" + fName
+				+ ", lName=" + lName + ", email=" + email + ", phone=" + phone + ", voucher=" + voucher
+				+ ", noOfPeople=" + noOfPeople + "]";
 	}
 	
 	

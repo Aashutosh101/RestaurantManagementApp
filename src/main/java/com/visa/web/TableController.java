@@ -26,11 +26,4 @@ public class TableController {
 		return adminService.getTables();
 	}
 	
-	@RequestMapping(value="api/admin/restaurant/tables", method=RequestMethod.POST)
-	public ResponseEntity<RestaurantTable> addRestaurantTable(@RequestBody RestaurantTable restaurantTable) {
-		adminService.addTable(restaurantTable);
-		return new ResponseEntity<RestaurantTable>(restaurantTable, HttpStatus.CREATED);
-	}
-	
-	
 }
