@@ -1,4 +1,12 @@
 $(function() {
+	var url = new URL(window.location.href);
+	var c = url.searchParams.get("message");
+	console.log(c);
+	if(c != null) {
+//		console.log("hh");
+		toastr.error(c);
+	} 
+
 	$("#user").click(function(){
 		console.log("User Clicked");
 		$("#admin").removeClass("active");

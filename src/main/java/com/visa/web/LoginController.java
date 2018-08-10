@@ -35,7 +35,7 @@ public class LoginController {
 					return "redirect:/html/checkAVailabilityForm.html?email=" + email; 
 			} else {
 				System.out.println(email + " " + password);
-				return "index.html";
+				return "redirect:index.html?message=user%20does%20not%20exist.";
 			}
 	}
 
@@ -49,7 +49,7 @@ public class LoginController {
 			if (adminExists == true) {
 				return "redirect:/html/adminHome.html?email=" + email;
 			} else {
-				return "redirect:index.html";
+				return "redirect:index.html?message=Admin%20does%20not%exist";
 			}
 		
 	}
