@@ -4,7 +4,7 @@ if(sessionStorage.getItem("admin") === null) {
 	console.log(c);
 	if(c === null) {
 //		console.log("hh");
-		window.location = ("../html/adminLoginForm.html");
+		window.location = ("/");
 	} else {
 //		console.log("gg");
 		sessionStorage.setItem("admin", c);
@@ -39,7 +39,7 @@ $(function() {
 
 	$("#logout_li").click(function(){
 		sessionStorage.removeItem("admin");
-		window.location = ("/html/adminLoginForm.html");
+		window.location = ("/");
 	})
 
 	getReservations();	  

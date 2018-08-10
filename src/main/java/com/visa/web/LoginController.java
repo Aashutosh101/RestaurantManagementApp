@@ -33,13 +33,10 @@ public class LoginController {
 //					request.getRequestDispatcher("html/checkAvailabilityForm.jsp").forward(request, response);
 //					response.sendRedirect("html/checkAvailabilityForm.jsp?email=" + email);
 					return "redirect:/html/checkAVailabilityForm.html?email=" + email; 
-				
-				
 			} else {
 				System.out.println(email + " " + password);
 				return "index.html";
 			}
-		
 	}
 
 	@RequestMapping(value="adminLogin.do", method=RequestMethod.POST)

@@ -1,3 +1,9 @@
+body {
+	background-image: url("../assets/images/bg_image.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
 .upper-space {
 	margin-top: 20px;
 }
