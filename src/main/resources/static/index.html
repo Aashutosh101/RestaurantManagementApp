@@ -16,18 +16,26 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/index.js"></script>
 	<title>Restaurant Management</title>
 </head>
 <body>
 	<div class="container">
+		
 		<h1 class="form-heading">Login Form</h1>
 		<div class="login-form">
 			<div class="main-div">
 		   		<div class="panel">
-		   			<h2>User Login</h2>
-		  			<p>Please enter your email and password</p>
+		   			<div class="row large-black-text">
+		   				LOGIN
+		   			</div>
+		   			<div class="nav nav-tabs nav-justified upper-space">
+						<li class="active" id="user"><a>User</a></li>
+						<li id="admin"><a>Admin</a></li>
+					</div>
+		  			<p class="upper-space">Please enter your email and password</p>
 		   		</div>
-		    	<form id="Login" method="post">
+		    	<form id="Login" method="POST" action="userLogin.do">
 		        	<div class="form-group">
 		           		<input type="email" class="form-control" id="email" placeholder="Email Address" name="email">
 		        	</div>

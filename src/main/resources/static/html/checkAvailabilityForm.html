@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +13,14 @@
 	<script src="../js/checkAvailabilityForm.js"></script>
 	<link rel="stylesheet" href="../css/seatMap.css"/>
 	<link rel="stylesheet" href="../css/utility.css"/>
-	<title>Reservation</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<title>Reservation</title> 
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row upper-space">
-			<div class="col-lg-offset-3 col-lg-6 col-xs-12">
+			<div class="col-lg-offset-3 col-lg-6 col-xs-10">
 				<div class="panel">
 					<div class="panel-heading">
 						<div class="white-text center-text">SELECT DATE AND TIME FOR YOUR RESERVATION</div>
@@ -25,6 +28,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<form>
+								
 								<div class="form-group col-lg-2">
 									<label for="date">Date</label>
 									<input type="date" class="form-control" id="date" name="date" required/>
@@ -101,6 +105,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-lg-offest-1 col-lg-2 col-xs-2 pull-right">
+				<a id="logout" class="btn btn-default">Logout</a>
 			</div>
 		</div>
 	</div>

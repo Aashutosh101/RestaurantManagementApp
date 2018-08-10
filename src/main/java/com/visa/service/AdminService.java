@@ -48,13 +48,14 @@ public class AdminService {
 	@Transactional
 	public void updateUser(String email, User u) {
 		User user = userDao.getOne(email);
-		user.setEmail(u.getEmail());
-		user.setFirstName(u.getFirstName());
-		user.setLastName(u.getLastName());
-		user.setPassword(u.getPassword());
-		user.setPhone(u.getPhone());
-		user.setRegistrationDate(u.getRegistrationDate());
+//		user.setEmail(u.getEmail());
+//		user.setFirstName(u.getFirstName());
+//		user.setLastName(u.getLastName());
+//		user.setPassword(u.getPassword());
+//		user.setPhone(u.getPhone());
+//		user.setRegistrationDate(u.getRegistrationDate());
 		user.setStatus(u.getStatus());
+		user.setRole(u.getRole());
 	}
 
 	public List<Reservation> getAllReservations() {
@@ -109,7 +110,7 @@ public class AdminService {
 	@Transactional
 	public void updateVoucher(int id, Voucher v) {
 		Voucher vv = voucherDao.getOne(id);
-		vv.setVoucherCode(v.getVoucherCode());
+		//vv.setVoucherCode(v.getVoucherCode());
 		vv.setValid(v.isValid());
 	}
 

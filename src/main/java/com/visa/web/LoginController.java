@@ -2,6 +2,7 @@ package com.visa.web;
 
 import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.visa.service.UserService;
 
@@ -18,36 +20,41 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("userLogin.do")
-	public void processUserLogin(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="/userLogin.do", method=RequestMethod.POST)
+	public String processLogin(HttpServletRequest request, HttpServletResponse response) {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
 		boolean userExists = userService.checkIfUserExist(email, password);
-		try {
+//		try {
 			if (userExists == true) {
-				response.sendRedirect("checkAvailabilityForm.html");
+//				request.setAttribute("email", email);
+				System.out.println("Here");
+//				try {
+//					request.getRequestDispatcher("html/checkAvailabilityForm.jsp").forward(request, response);
+//					response.sendRedirect("html/checkAvailabilityForm.jsp?email=" + email);
+					return "redirect:/html/checkAVailabilityForm.html?email=" + email; 
+				
+				
 			} else {
-				response.sendRedirect("index.html");
+				System.out.println(email + " " + password);
+				return "index.html";
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
-	@RequestMapping("adminLogin.do")
-	public void processAdminLogin(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="adminLogin.do", method=RequestMethod.POST)
+	public String processAdminLogin(HttpServletRequest request, HttpServletResponse response) {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
+		System.out.println(email + " " + password);
 		boolean adminExists = userService.checkIfAdminExist(email, password);
-		try {
+		System.out.println(adminExists);
 			if (adminExists == true) {
-				response.sendRedirect("adminHome.html");
+				return "redirect:/html/adminHome.html?email=" + email;
 			} else {
-				response.sendRedirect("index.html");
+				return "redirect:index.html";
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	@RequestMapping("logout.do")

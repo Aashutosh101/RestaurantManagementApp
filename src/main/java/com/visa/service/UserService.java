@@ -38,6 +38,8 @@ public class UserService {
 		List<RestaurantTable> reservedTables=reservationDao.findReservedTables(date);
 		List<RestaurantTable> allTables=restaurantTableDao.findAll();
 		List<RestaurantTable> availableTables=allTables.stream().filter(t -> (!reservedTables.contains(t)) && t.getCapacity()>=noOfPeople && t.getCapacity() <= noOfPeople+2 ).collect(Collectors.toList());
+		System.out.println(reservedTables);
+		System.out.println(allTables);
 		return availableTables;		
 	}
 	
@@ -51,11 +53,20 @@ public class UserService {
 	}
 
 	public boolean checkIfUserExist(String email, String password) {
+		if(userDao.findByEmailAndPassword(email,password)!=null)
+			return true;
+		
 		return false;
 	}
 
 	public boolean checkIfAdminExist(String email, String password) {
-		return false;
+		User user = userDao.findByEmailAndPassword(email,password);
+//		System.out.println(user.getRole()+"p");
+		if(user!=null && user.getRole().equals("Admin")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public User getById(String email) {

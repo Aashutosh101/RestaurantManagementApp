@@ -30,10 +30,12 @@ public class RegistrationController {
 	@RequestMapping(value="api/users/register/checkAvailability" , method=RequestMethod.GET)
 	public  @ResponseBody List<RestaurantTable> checkAvailability(@RequestParam("date") String date,@RequestParam("time") String time,@RequestParam("noOfPeople") int noOfPeople) throws RestaurantApiException, TimeOutOfBoundsException {
 		SimpleDateFormat datetimeFormatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		System.out.println(date + " " + time);
 		List<RestaurantTable> availableTables=null;
 		try {
 			Date fromDate = datetimeFormatter.parse(date+" "+time);
 			RestaurantTiming rt=userService.getRestaurantTimingByDay(fromDate.getDay());
+			System.out.println(rt);
 			if(!checkInRange(time,rt.getStartTime(),rt.getEndTime())) {
 				throw new TimeOutOfBoundsException(date + " " + time,  "Restaurant closed during those hours");
 			}

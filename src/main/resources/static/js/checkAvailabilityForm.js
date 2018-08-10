@@ -1,12 +1,30 @@
 if(sessionStorage.getItem("user") === null) {
-	window.location = ("../index.html");
+	var url = new URL(window.location.href);
+	var c = url.searchParams.get("email");
+	if(c === null) {
+		window.location = ("../index.html");
+	} else {
+		sessionStorage.setItem("user", c);
+		window.location = ("checkAvailabilityForm.html");
+	}
 }
 
+
 $(function() {
+	var msg = sessionStorage.getItem("message");
+	if(msg != null) {
+		toastr.success(msg);
+		sessionStorage.removeItem("message");
+	}
 	sessionStorage.removeItem("date");
 	sessionStorage.removeItem("time");
 	sessionStorage.removeItem("people");
 	sessionStorage.removeItem("table");
+
+	$("#logout").click(function() {
+		sessionStorage.removeItem("user");
+		window.location = ("/");
+	});
 
 
 	$("#check_availability").click(function(event) {
@@ -50,7 +68,7 @@ $(function() {
 		data["time"] = time;
 		data["noOfPeople"] = parseInt(people);
 
-		$.getJSON("https://my-json-server.typicode.com/shoonya26/myjson/tables?" + $.param(data), function(data) {
+		$.getJSON("/api/users/register/checkAvailability?" + $.param(data), function(data) {
 			if(data.length == 0) {
 				$("#error").text("No seats available for selected date and time");
 				$("#error").css("display", "block");

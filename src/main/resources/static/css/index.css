@@ -49,3 +49,13 @@
 }
 .back { text-align: left; margin-top:10px;}
 .back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+.upper-space {
+  margin-top: 15px;
+}
+
+.large-black-text {
+  color: black;
+  font-size: 20px;
+  font-style: bold;
+}

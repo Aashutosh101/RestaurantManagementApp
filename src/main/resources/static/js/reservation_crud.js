@@ -11,13 +11,28 @@ function getReservations() {
 			var tb = $("#table_body");
 			for(var i = 0 ; i < data.length ; i++) {
 				console.log("Row append");
-				tb.append(getRow(data[i]));
+				tb.append(getReservationRow(data[i]));
 			}
 		});
 	})
 }
 
-function getRow(ele) {
+function updateReservation(reservationId) {
+	var new_status = $("#" + reservationId).val();
+	$.ajax({
+		url: "/api/admin/reservations/" + reservationId,
+		type: "PUT",
+		data: JSON.stringify({"status": new_status}),
+		headers: {
+			  "Content-type": "application/json"
+		  },
+		success: function() {
+			toastr.success("Status Updated");
+		}
+	});
+}
+
+function getReservationRow(ele) {
 	ele["Confirmed"] = "";
 	ele["Pending"] = "";
 	ele["Cancelled"] = "";
@@ -37,7 +52,7 @@ function getRow(ele) {
 		    	<td>" + ele["rTable"]["id"] + "</td>\
 		    	<td>" + ele["noOfPeople"] + "</td>\
                 <td> \
-			        <select id='" + ele["reservationId"] + "'>\
+			        <select id='" + ele["reservationId"] + "' onchange='updateReservation(" + ele["reservationId"] + ")'>\
                         <option value='Confirmed' " + ele["Confirmed"] + ">Confirmed</option>\
                         <option value='Cancelled' " + ele["Cancelled"] + ">Cancelled</option>\
                         <option value='Enquiry' " + ele["Enquiry"] + ">Enquiry</option>\

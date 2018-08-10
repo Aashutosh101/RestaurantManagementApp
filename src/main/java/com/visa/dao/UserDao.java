@@ -8,4 +8,6 @@ import com.visa.entity.User;
 @Repository
 public interface UserDao extends JpaRepository<User, String> {
 
+	public User findByEmailAndPassword(String email, String password);
+
 }
